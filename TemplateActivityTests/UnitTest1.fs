@@ -1,4 +1,4 @@
-module LibTests
+module TemplateActivityTests
 
 open NUnit.Framework
 

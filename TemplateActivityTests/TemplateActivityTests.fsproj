@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lib\Lib.fsproj" />
+    <ProjectReference Include="..\TemplateActivity\TemplateActivity.fsproj" />
   </ItemGroup>
 
 </Project>
