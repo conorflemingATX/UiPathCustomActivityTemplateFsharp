@@ -13,12 +13,22 @@ dotnet pack -o "$($env:LOCALAPPDATA)\UiPath\app-<UIPATH STUDIO VERSION>\Packages
 
 Assuming that the PackageId which has been referenced in the TemplateActivity.fsproj file contains the word Activities, then the Custom Activity should be available to be installed into a library or process.
 
-## Next Steps
+Testing is pretty straight forward,
 
-1. Add a new namespace above the main TemplateActivity which will contain the business logic for the activity, and add some small function that is testable and can be seen using the activity in UiPath.
+From the root directory:
 
-2. Set up testing within the TemplateActivityTests project to use FsUnit and FsUnit typed.
+```powershell
+dotnet test
+```
 
-3. Run the test command and note the test command with the relevant dotnet watch context in the README.
+or with dotnet watch in effect:
 
-4. Set up the build on the TemplateActivity project to use conditions on the ItemGroups so that the netcore version uses corewf, and so could be run within dotnet core, at least in theory, and for the net461 version of the build to use the proper reference assemblies from the framework.
+```powershell
+dotnet watch --project .\TemplateActivity test .\TemplateActivityTests
+```
+
+From the TemplateActivity directory you can omit the project parameter for the watch, and from the test directory you can omit the argument after test.
+
+---
+
+P.S I had attempted to run a conditional build using the corewf package for System.Activities and having the net461 version build with the reference assemblies, but this didn't go very well. I may attempt it again for curiosity's sake, but I'm not really attempting to run the code activity using the core runtime anyway. In theory it would make it more testable, but the solution, and much better option from a separation of concerns perspective anyway is to include as little business logic as possible within the CodeActivity and reduce the execute method to simply passing the arguments to a function from the Lib module and assigning the result to OutArguments.

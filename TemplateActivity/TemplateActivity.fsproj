@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Lib.fs" />
     <Compile Include="TemplateActivity.fs" />
   </ItemGroup>
 
@@ -23,5 +24,4 @@
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.Composition.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>

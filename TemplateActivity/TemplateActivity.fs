@@ -15,6 +15,6 @@ type Activity () =
 
     override x.Execute (ctx: CodeActivityContext) =
         let name = x.Name.Get(ctx)
-        // let hi = hello name
-        x.Out.Set(ctx, name)
+        let hi = Lib.hello name
+        x.Out.Set(ctx, hi)
 
